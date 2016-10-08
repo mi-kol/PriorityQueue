@@ -1,6 +1,6 @@
 
-public interface PQueue<QType> {
-	public void enqueue(QType elm, int p);
-	public QType dequeue();
+public interface PQueue<T> {
+	public void enqueue(T elm, int p);
+	public T dequeue();
 	public int size();
 }
