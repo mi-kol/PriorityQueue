@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad15d524-bbe0-4af0-b732-270b9f1528f0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PQueue.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/UnsortedArrayPriorityQueue.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/PQueue.class" afterPath="$PROJECT_DIR$/bin/PQueue.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/UnsortedArrayPriorityQueue.class" afterPath="$PROJECT_DIR$/bin/UnsortedArrayPriorityQueue.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PQueue.java" afterPath="$PROJECT_DIR$/src/PQueue.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UnsortedArrayPriorityQueue.java" afterPath="$PROJECT_DIR$/src/UnsortedArrayPriorityQueue.java" />
     </list>
     <ignored path="PriorityQueue.iws" />
@@ -43,8 +38,8 @@
       <file leaf-file-name="UnsortedArrayPriorityQueue.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UnsortedArrayPriorityQueue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+            <state relative-caret-position="3395">
+              <caret line="97" column="136" selection-start-line="97" selection-start-column="136" selection-end-line="97" selection-end-column="136" />
               <folding>
                 <element signature="e#129#159#0" expanded="true" />
               </folding>
@@ -55,8 +50,8 @@
       <file leaf-file-name="Tester.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+            <state relative-caret-position="549">
+              <caret line="138" column="80" selection-start-line="138" selection-start-column="80" selection-end-line="138" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -523,8 +518,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="549">
+          <caret line="138" column="80" selection-start-line="138" selection-start-column="80" selection-end-line="138" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -533,8 +528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UnsortedArrayPriorityQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+        <state relative-caret-position="3395">
+          <caret line="97" column="136" selection-start-line="97" selection-start-column="136" selection-end-line="97" selection-end-column="136" />
           <folding>
             <element signature="e#129#159#0" expanded="true" />
           </folding>

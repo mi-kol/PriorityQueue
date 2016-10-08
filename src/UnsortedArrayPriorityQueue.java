@@ -6,40 +6,51 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 	@SuppressWarnings("unchecked")
 	private QType[] elms = (QType[]) new Object[arraySize];
 	public Integer[] priorities = new Integer[arraySize];
+	// Initializing vars
 
 	public QType dequeue() {
-		int highlander = 0;
-		int newChallenger = 0;
-		// keeps track of highest priority
-		for (int i = 0; i < arraySize; i++) {
-			if ((priorities[i] > priorities[highlander]) && (priorities[i] != null) && (priorities[highlander] != null)) {
-				highlander = i;
-			}
-			// try catching with NPE didn't work here. why?
-			else if ((priorities[i] == priorities[highlander]) && (priorities[i] != null)) {
-				newChallenger = i;
-				if (newChallenger < highlander) {
-					highlander = newChallenger;
-				} else {
-					newChallenger = 0;
-				}
+		int highestPriorityLevel = 0;
+		// keeps track of the highest priority level
+		int forRemoval = 0;
+		// keeps track of which elm will be removed
+		int noContradictions = 0;
+		// makes sure there's no contradictions when adding to the highestPriorityElmIndexes
+
+		Integer[] highestPriorityElmIndexes = new Integer[priorities.length];  // Start with this length so we always have enough space
+		// Keeps track of all indexes that match the highestPriorityLevel
+
+		// Finds highest priority
+		for (int i = 0; i < priorities.length; i++) {
+			if ((priorities[i] != null) && (priorities[i] > highestPriorityLevel)) {
+				// Why can't I try/catch this? Also, why is this even a problem? Is there a workaround?
+				highestPriorityLevel = priorities[i];
 			}
 		}
-		// Finds the highest priority, breaks ties between same priorities
 
-		QType ret_val = elms[highlander];
-		elms[highlander] = null;
-		priorities[highlander] = null;
-
-		for (int i = highlander; i < elms.length - 1; i++) {
-			elms[i] = elms[i+1];
-			priorities[i] = priorities[i+1];
+		// Finds all elms that match the highest priority and pust them in highestPriorityElmIndexes
+		for (int i = 0; i < elms.length; i++) {
+			if ((priorities[i] != null) && (priorities[i] == highestPriorityLevel)) {
+				highestPriorityElmIndexes[noContradictions] = i;
+				noContradictions++;
+			}
 		}
 
-		elms[arraySize - 1] = null;
-		priorities[arraySize - 1] = null;
+		forRemoval = highestPriorityElmIndexes[0];
 
-		return ret_val;
+		QType removed = elms[forRemoval];
+		elms[forRemoval] = null;
+		priorities[forRemoval] = null;
+
+		for (int i = forRemoval; i < elms.length - 1; i++) {
+			elms[i] = elms[i + 1];
+			priorities[i] = priorities[i + 1];
+		}
+		// Shifts everything to accommodate the removal
+
+		elms[elms.length - 1] = null;
+		priorities[priorities.length - 1] = null;
+
+		return removed;
 	}
 
 	public void enqueue(QType q, int pri) {
@@ -53,6 +64,7 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 			}
 		}
 	}
+	// Pushes things to the priority queue. Doubles sizes of arrays if needs more space.
 
 	public int size() {
 		// This also doubles as data integrity verification to make sure all three arrays are working in tandem.
@@ -83,7 +95,7 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 
 		return array;
 	}
-
+	// Here I made two different functions, because of typing issues. Using a statically typed language like Java, how should I do this?
 	public Integer[] doublePri(Integer[] array) {
 		int doubleSize = array.length * 2;
 		array = Arrays.copyOf(array, doubleSize);
