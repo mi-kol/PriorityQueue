@@ -1,6 +1,4 @@
-import java.util.*
-
-public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>() {
+public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 
 	public int arraySize = 10;
 	public QType[] elms = new QType[arraySize];
@@ -13,24 +11,24 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>() {
 		// keeps track of highest priority
 		
 		for (int i = 0; i < arraySize; i++) {
-			if (priorities[i] > currentHighest) {
-				currentHighest = i;
-			} else if (priorities[i].equals(currentHighest)) {
+			if (priorities[i] > highlander) {
+				highlander = i;
+			} else if (priorities[i].equals(highlander)) {
 				newChallenger = i;
-				if (timeWaiting[newChallenger] > timeWaiting[currentHighest]) {
-					currentHighest = newChallenger;
-				} else if (timeWaiting[newChallenger].equals(timeWaiting[currentHighest]) {
+				if (timeWaiting[newChallenger] > timeWaiting[highlander]) {
+					highlander = newChallenger;
+				} else if (timeWaiting[newChallenger].equals(timeWaiting[highlander])) {
 					System.out.println("What did you DO?");
 				} else {
 					newChallenger = -1;
 				}
 			}
 		}
-		// Finds the highest priority
+		// Finds the highest priority, breaks ties between same priorities
 		
 		QType ret_val = elms[highlander];
 		elms[highlander] = null;
-		ps[highlander] = null;
+		priorities[highlander] = null;
 		timeWaiting = null;
 
 		for (int i = highlander; i < elms.length - 1; i++) {
@@ -43,7 +41,16 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>() {
 		priorities[arraySize - 1] = null;
 		timeWaiting[arraySize - 1] = null;
 		
-		reutn ret_val;
+		return ret_val;
+	}
+
+	public void enqueue(QType q, int pri) {
+		;;
+	}
+
+	public int size() {
+		return elms.length;
+		// TODO: Fix this, waiting for answer from Christian
 	}
 }
 		
