@@ -136,11 +136,11 @@ public class Tester extends ApplicationFrame {
 
 	public static void main(String[] args) throws Exception {
 
-		vailidateStructure(DummyPQueue.class, 100);
+		Tester t1 = new Tester(UnsortedArrayPriorityQueue.class, 1000, 30000, 3000);
 		
-		// Arguements for the test: Class to test, start n, end n, interval n
+		// Arguments for the test: Class to test, start n, end n, interval n
 		// 		Example:
-		//Tester t1 = new Tester(UnsortedPQueue.class, 1000, 30000, 3000);
+		// Tester t1 = new Tester(UnsortedPQueue.class, 1000, 30000, 3000);
 		
 	}
 }
