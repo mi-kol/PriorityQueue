@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 
 	public int arraySize = 10;
-	public QType[] elms = new QType[arraySize];
+	public QType[] elms = (QType[]) new Object[arraySize];
 	public Integer[] priorities = new Integer[arraySize];
 	public Integer[] timeWaiting = new Integer[arraySize];
 
@@ -45,18 +47,22 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 	}
 
 	public void enqueue(QType q, int pri) {
-                for (int i = 0; i < arraySize; i++) {
-                        if ((elms[i] == null && priorities[i] == null && timeWaiting[i
-] == null) || (elms[i].trim().length() == 0 && priorities.trim().length() == 0 && time
-Waiting.trim().length() == 0)) {
-                                elms[i] = q;
-                                priorities[i] = pri;
-                                timeWaiting = 0;
-                        } else {
-                                doubleDown();
+		for (int i = 0; i < timeWaiting.length; i++) {
+			if ((elms[i] != null) && (priorities[i] != null) && (timeWaiting[i] != null)) {
+				timeWaiting[i] += 1;
+			}
+		}
+		for (int i = 0; i < arraySize; i++) {
+			if ((elms[i] == null) && (priorities[i] == null) && (timeWaiting[i] == null)) {
+				elms[i] = q;
+				priorities[i] = pri;
+				timeWaiting[i] = 0;
+			} else {
+				doubleDown();
 				enqueue(q, pri);
-                }
-        }
+			}
+		}
+	}
 
 	public int size() {
 		// This also doubles as data integrity verification to make sure all three arrays are working in tandem.
@@ -79,13 +85,16 @@ Waiting.trim().length() == 0)) {
 		if ((elmsize == psize) && (psize == tmsize) && (tmsize == elmsize)) {
 			return elmsize;
 		} else {
+			System.out.println("All these values should be the same!");
 			System.exit(0);
+			return -1;
 		}
-
 	}
 
 	public void doubleDown() {
-		;;
-		// TODO: Double not only arrays, but variable arraySize
+		elms = Arrays.copyOf(elms, elms.length * 2);
+		priorities = Arrays.copyOf(priorities, priorities.length * 2);
+		timeWaiting = Arrays.copyOf(timeWaiting, timeWaiting.length * 2);
+		arraySize *= 2;
 	}
 }
