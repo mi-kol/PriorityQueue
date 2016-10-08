@@ -45,12 +45,47 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 	}
 
 	public void enqueue(QType q, int pri) {
-		;;
-	}
+                for (int i = 0; i < arraySize; i++) {
+                        if ((elms[i] == null && priorities[i] == null && timeWaiting[i
+] == null) || (elms[i].trim().length() == 0 && priorities.trim().length() == 0 && time
+Waiting.trim().length() == 0)) {
+                                elms[i] = q;
+                                priorities[i] = pri;
+                                timeWaiting = 0;
+                        } else {
+                                doubleDown();
+				enqueue(q, pri);
+                }
+        }
 
 	public int size() {
-		return elms.length;
-		// TODO: Fix this, waiting for answer from Christian
+		// This also doubles as data integrity verification to make sure all three arrays are working in tandem.
+		int elmsize = 0;
+		int psize = 0;
+		int tmsize = 0;
+		
+		for (int i = 0; i < arraySize; i++) {
+			if (elms[i] != null) {
+				elmsize++;
+			}
+			if (priorities[i] != null) {
+				psize++;
+			}
+			if (timeWaiting[i] != null) {
+				tmsize++;
+			}
+		}
+
+		if ((elmsize == psize) && (psize == tmsize) && (tmsize == elmsize)) {
+			return elmsize;
+		} else {
+			System.exit(0);
+		}
+
+	}
+
+	public void doubleDown() {
+		;;
+		// TODO: Double not only arrays, but variable arraySize
 	}
 }
-		
