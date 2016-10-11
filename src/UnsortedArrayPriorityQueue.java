@@ -27,7 +27,7 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 			}
 		}
 
-		// Finds all elms that match the highest priority and pust them in highestPriorityElmIndexes
+		// Finds all elms that match the highest priority and push them in highestPriorityElmIndexes
 		for (int i = 0; i < elms.length; i++) {
 			if ((priorities[i] != null) && (priorities[i] == highestPriorityLevel)) {
 				highestPriorityElmIndexes[noContradictions] = i;
