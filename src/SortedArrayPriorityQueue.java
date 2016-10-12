@@ -3,11 +3,36 @@ import java.util.Arrays;
 public class SortedArrayPriorityQueue<QType> implements PQueue<QType> {
     public int arraySize = 10;
     private Q[] objs = new Q[arraySize];
-    @SuppressWarnings("unchecked")
-    private QType[] elms = (QType[]) new Object[arraySize];
+    public QType[] elms = (QType[]) new Object[arraySize];
 
     public QType dequeue() {
-        for(;;);
+        int highestPriorityLevel = 0;
+        int forRemoval = 0;
+        int noContradictions = 0;
+
+        Integer[] highestPriorityElmIndexes = new Integer[objs.length];
+
+        for (int i = 0; i < objs.length; i++) {
+            if ((objs[i] != null) && (objs[i].getPriority() > highestPriorityLevel)) {
+                highestPriorityLevel = objs[i].getPriority();
+            }
+        }
+
+        for (int i = 0; i < objs.length; i++) {
+            if ((objs[i] != null) && (objs[i].getPriority() == highestPriorityLevel)) {
+                highestPriorityElmIndexes[noContradictions] = i;
+                noContradictions++;
+            }
+        }
+
+        forRemoval = highestPriorityElmIndexes[0];
+
+        QType removed = (QType) objs[forRemoval].getElm();
+        objs[forRemoval] = null;
+
+        for (int i = forRemoval; i < objs.length - 1; i++) {
+            objs[i] = objs[i + 1];
+        }
     }
 
     public void enqueue(QType q, int pri) {
@@ -18,7 +43,6 @@ public class SortedArrayPriorityQueue<QType> implements PQueue<QType> {
             if (objs[i] == null) {
                 newQ.setIndex(i);
                 objs[i] = newQ;
-                elms[i] = (QType) newQ.elm;
             } else {
                 doubleQ(objs);
                 doubleE(elms);
@@ -26,7 +50,7 @@ public class SortedArrayPriorityQueue<QType> implements PQueue<QType> {
                 enqueue(q, pri);
             }
         }
-
+        Arrays.sort(objs);
     }
 
     public int size() {
@@ -51,14 +75,20 @@ public class SortedArrayPriorityQueue<QType> implements PQueue<QType> {
         Arrays.sort(objs);
     }
 
+    public void elmRipper(Q[] array) {
+        for (int i = 0; i < objs.length; i++) {
+            elms[i] = (QType) objs[i].getElm();
+        }
+    }
+
 
 }
 
 class Q<QType> implements Comparable<Q> {
-    QType elm;
-    int index;
-    int priority;
-    int timeWaiting = 0;
+    public QType elm;
+    private int index;
+    private int priority;
+    private int timeWaiting = 0;
 
     public void setIndex(int fnIndex) {
         index = fnIndex;
@@ -84,7 +114,7 @@ class Q<QType> implements Comparable<Q> {
         return priority;
     }
 
-    public int ticker() {
+    public void ticker() {
         timeWaiting += 1;
     }
 

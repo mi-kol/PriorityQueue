@@ -102,4 +102,5 @@ public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 
 		return array;
 	}
+
 }
