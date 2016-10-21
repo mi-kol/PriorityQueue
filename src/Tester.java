@@ -136,7 +136,7 @@ public class Tester extends ApplicationFrame {
 
 	public static void main(String[] args) throws Exception {
 		// vailidateStructure(UnsortedArrayPriorityQueue.class, 10);
-		Tester t1 = new Tester(UnsortedArrayPriorityQueue.class, 1000, 30000, 3000);
+		Tester t1 = new Tester(LinkedListPriorityQueue.class, 10000, 3000000, 3000);
 		
 		// Arguments for the test: Class to test, start n, end n, interval n
 		// 		Example:

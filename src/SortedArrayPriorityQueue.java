@@ -33,10 +33,14 @@ public class SortedArrayPriorityQueue<QType> implements PQueue<QType> {
         for (int i = forRemoval; i < objs.length - 1; i++) {
             objs[i] = objs[i + 1];
         }
+
+        objs[objs.length - 1] = null;
+
+        return removed;
     }
 
     public void enqueue(QType q, int pri) {
-        Q newQ = new Q;
+        Q newQ = new Q();
         newQ.setElm(q);
         newQ.setPriority(pri);
         for (int i = 0; i < arraySize; i++) {
@@ -54,7 +58,14 @@ public class SortedArrayPriorityQueue<QType> implements PQueue<QType> {
     }
 
     public int size() {
-        for(;;);
+        int size = 0;
+
+        for (int i = 0; i < arraySize; i++) {
+            if (elms[i] != null) {
+                size++;
+            }
+        }
+        return size;
     }
 
     public Q[] doubleQ(Q[] array) {
@@ -73,6 +84,7 @@ public class SortedArrayPriorityQueue<QType> implements PQueue<QType> {
 
     public void sort() {
         Arrays.sort(objs);
+        elmRipper(objs);
     }
 
     public void elmRipper(Q[] array) {

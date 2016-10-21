@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class UnsortedArrayPriorityQueue<QType> implements PQueue<QType>{
 
 	public int arraySize = 10;
